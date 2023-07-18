@@ -1,0 +1,118 @@
+html,body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav button {
+    float: left;
+    color: #030000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav button:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav button.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .main{
+    padding-left:16px;
+    padding-bottom: 100px;
+    flex: 1 0 auto;
+  }
+
+  footer {
+    text-align: center;
+    flex: 0 0 auto;
+  
+  padding: 1rem;/*это свойство можно удалить, добавлено для наглядности*/
+  background: #e6ffe6;/*это свойство можно удалить, добавлено для наглядности*/
+  }
+
+
+  .table{
+	border: 1px solid #eee;
+	table-layout: fixed;
+	width: 100%;
+	margin-bottom: 20px;
+}
+.table th {
+	font-weight: bold;
+  font-size: 25px;
+  height: 30px;
+	padding: 5px;
+	background: #efefef;
+	border: 1px solid #dddddd;
+}
+.table td{
+	padding: 5px 10px;
+  height: 40px;
+	border: 1px solid #eee;
+	text-align: center;
+  font-size: 18px;
+}
+.table tbody tr:nth-child(odd){
+	background: #fff;
+}
+.table tbody tr:nth-child(even){
+	background: #F7F7F7;
+}
+
+.form {
+  max-width: 320px;
+  padding: 15px;
+  margin: 20px auto;
+  background-color: #fff;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  
+  border: 1px solid #ccc;
+  
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  
+  border: 0;
+  background-color: #1cbc11;
+  cursor: pointer;
+  
+  font-family: inherit;
+  font-size: 16px;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: #14a20a;
+}
+
+
+
+
+
+
+

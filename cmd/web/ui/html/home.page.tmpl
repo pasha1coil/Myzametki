@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="static/css/style.css">
+
+</head>
+<body>
+
+  <div class="topnav">
+    <form action="/" method = "POST">
+      <button class="active" type="submit">Home</button>
+    </form>
+    <form action="/create" method = "POST">
+      <button type="submit">Create</button>
+    </form>
+  </div> 
+<form method = "POST">
+  <div class="main">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>Открыть</th>
+                  <th>Номер</th>
+                  <th>Название</th>
+                  <th>Дата создания</th>
+              </tr>
+          </thead>
+          <tbody>
+              {{range.}}
+              <tr>
+                  <td><button id = {{.ID}} onclick="opentab({{.ID}})">Open</button></td>
+                  <td>{{.ID}}</td>
+                  <td>{{.Title}}</td>
+                  <th>{{.Created}}</th>
+              </tr>
+              {{end}}
+          </tbody>
+      </table>
+      
+  </div>
+</form>
+
+<script src="/static/js/index.js"></script>
+</body>
+</html>
+
+
+

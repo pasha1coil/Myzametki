@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/css/style.css">
+
+</head>
+<body>
+
+<form method = "POST">
+  <div class="main">
+              {{with .Zametki}}
+                  <h1>{{.ID}}</h1>
+                  <h2>{{.Title}}</h2>
+                  <h3>{{.Content}}</h3>
+                  <h4>{{.Created}}</h4>
+                  <button onclick="closetab()">Закрыть</button>
+                  <button onclick="delZamet({{.ID}})">Удалить</button>
+              {{end}}
+  </div>
+</form>
+
+<script src="/static/js/index.js"></script>
+</body>
+</html>
+
+
+

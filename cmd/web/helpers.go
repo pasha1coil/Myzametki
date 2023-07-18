@@ -1,0 +1,64 @@
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"runtime/debug"
+	"zametki/pkg/models"
+)
+
+func (app *application) serverError(w http.ResponseWriter, err error) {
+	trace := fmt.Sprintf("%s\n%s", err.Error(), debug.Stack())
+	app.errorLog.Output(2, trace)
+
+	http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+}
+
+func (app *application) clientError(w http.ResponseWriter, status int) {
+	http.Error(w, http.StatusText(status), status)
+}
+
+func (app *application) notFound(w http.ResponseWriter) {
+	app.clientError(w, http.StatusNotFound)
+}
+
+func (app *application) render(w http.ResponseWriter, r *http.Request, name string, td []models.Zametki) {
+
+	ts, ok := app.templateCache[name]
+	if !ok {
+		app.serverError(w, fmt.Errorf("Шаблон %s не существует!", name))
+		return
+	}
+
+	err := ts.Execute(w, td)
+	if err != nil {
+		app.serverError(w, err)
+	}
+}
+
+func (app *application) renderOne(w http.ResponseWriter, r *http.Request, name string, td *templateData) {
+
+	ts, ok := app.templateCache[name]
+	if !ok {
+		app.serverError(w, fmt.Errorf("Шаблон %s не существует!", name))
+		return
+	}
+
+	err := ts.Execute(w, td)
+	if err != nil {
+		app.serverError(w, err)
+	}
+}
+
+func (app *application) renderPage(w http.ResponseWriter, r *http.Request, name string) {
+
+	ts, ok := app.templateCache[name]
+	if !ok {
+		app.serverError(w, fmt.Errorf("Шаблон %s не существует!", name))
+		return
+	}
+	err := ts.Execute(w, nil)
+	if err != nil {
+		app.serverError(w, err)
+	}
+}
